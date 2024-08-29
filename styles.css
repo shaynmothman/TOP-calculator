@@ -1,0 +1,116 @@
+:root {
+    --color-border: rgba(209, 213, 219, 0.3);
+    --color-background: rgba(255, 255, 255, 0.5);
+    --color-black: #333;
+    --curve-lg: 12px;
+    --curve-sm: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-image: url("./images/pastel-background.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button {
+    box-shadow: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--curve-sm);
+    transition: 0.3s;
+    color: var(--color-black);
+}
+
+h1 {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0px;
+    color: var(--color-black);
+}
+
+p.screen {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#calc-body {
+    width: 80vw;
+    max-width: 400px;
+    backdrop-filter: blur(7px) saturate(153%);
+    -webkit-backdrop-filter: blur(7px) saturate(153%);
+    background-color: var(--color-background);
+    border-radius: var(--curve-lg);
+    border: 2px solid var(--color-border);
+    padding: 50px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calc-screen {
+    width: 100%;
+    background-color: rgb(128 90 144);
+    border-radius: var(--curve-sm);
+    height: 50px;
+    margin: 15px 0px;
+}
+
+#calc-keypad {
+    width: 100%;
+    border: 2px solid var(--color-border);
+    border-radius: var(--curve-sm);
+    padding: 5px 0px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 7px;
+    background-color: var(--color-background);
+}
+
+#calc-keypad-numbers {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    > button {
+        flex-grow: 1;
+        width: 30%;
+
+        &:hover {
+            background-color: rgb(231, 212, 240);
+        }
+    }
+}
+
+#calc-keypad-operations {
+    display: flex;
+    flex-flow: column wrap;
+    width: 25%;
+
+    > button {
+        height: 60px;
+        background-color: rgb(223, 227, 250);
+
+        &:hover {
+            background-color: rgb(196, 203, 241);
+        }
+    }
+
+    #btn-clear {
+        background-color: rgb(175, 182, 223);
+
+        &:hover {
+            background-color: rgb(140, 148, 194);
+        }
+    }
+
+    #btn-equals {
+        background-color: rgb(191, 211, 205);
+
+        &:hover {
+            background-color: rgb(164, 190, 183);
+        }
+    }
+}
