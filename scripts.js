@@ -3,7 +3,6 @@ let numberOne = '';
 let numberTwo = '';
 let operator;
 let result = 0;
-let displayValue = '';
 let operating = false;
 
 /* Show '0' on screen initially */
@@ -56,11 +55,9 @@ numberButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
         if (operating === false) {
             numberOne += button.textContent;
-            console.log(numberOne);
             screenOutput.textContent = numberOne;
         } else {
             numberTwo += button.textContent;
-            console.log(numberTwo);
             screenOutput.textContent = numberTwo;
         }
     })
@@ -71,10 +68,18 @@ const operatorButtons = document.querySelectorAll("button.function");
 
 operatorButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
-        operator = button.textContent;
-        console.log(operator);
-        operating = true;
-        
+        if(operating === false) {
+            operator = button.textContent;
+            operating = true;
+        } else {
+            clearOperatorButtonStyling();
+            operate(operator, numberOne, numberTwo);
+            screenOutput.textContent = result;
+            numberOne = result;
+            operator = button.textContent;
+            numberTwo = '';
+        }
+
         applyOperatorButtonStyling(button);
     })
 })
@@ -83,9 +88,11 @@ operatorButtons.forEach((button) => {
 const enterButton = document.querySelector('#btn-equals');
 
 enterButton.addEventListener('click', (event) => {
-    operate(operator, numberOne, numberTwo);
-    screenOutput.textContent = result;
-    numberOne = result;
+    operate(operator, numberOne, numberTwo); //Perform calculation
+    screenOutput.textContent = result; //Output result to screen
+    numberOne = result; //Set numberOne to the result of completed calculation
+    operator = '';
+    numberTwo = '';
     operating = false;
     
     clearOperatorButtonStyling();
@@ -95,8 +102,7 @@ enterButton.addEventListener('click', (event) => {
 const clearButton = document.querySelector('#btn-clear')
 
 clearButton.addEventListener('click', (event) => {
-    displayValue = 0;
-    screenOutput.textContent = displayValue;
+    screenOutput.textContent = 0;
     numberOne = '';
     numberTwo = '';
     operator = '';
